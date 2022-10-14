@@ -1,16 +1,3 @@
-//const { isEmpty, reverse } = require("lodash");
-//Global variables 
-// let _floor;
-// let _id;
-// let _direction;
-// let elevator;
-// let floorRequestButtonsList = [];
-// let floorRequestList = [];
-// let elevatorID = 1;
-//let floorRequestButtonID;
-
-
-
 class Column {
     constructor(_id, _amountOfFloors, _amountOfElevators) {
         this.ID = _id;
@@ -27,8 +14,6 @@ class Column {
         for (var i = 0; i < _amountOfFloors; i++) {
             if (buttonFloor < _amountOfFloors) {
                 let callButton = new CallButton(callButtonID, 'OFF', buttonFloor, 'up');
-                //callButton._id = OFF;
-                //callButton._buttonFloor = UP;
                 this.callButtonList.push(callButton);
                 callButton.ID++;
             }
@@ -39,7 +24,6 @@ class Column {
             }
             buttonFloor++;
         }
-        // createElevators(_amountOfFloors, _amountOfElevators);
     }
 
     createElevators(_amountOfFloors, _amountOfElevators) {
@@ -49,21 +33,14 @@ class Column {
             this.elevatorList.push(elevator);
             elevatorID += 1;
         }
-        // this.requestElevator(_floor, _direction);
-        console.log('Number of elevators');
-        console.log(this.elevatorList);
     }
 
     requestElevator(floor, direction) {
         console.log('floor and direction');
         console.log(floor, direction);
         let elevator = this.findElevator(floor, direction);
-        // this.findElevator(_floor, _direction);
-        console.log(elevator);
         elevator.floorRequestList.push(floor);
         elevator.move();
-        console.log(elevator);
-        // elevator.operateDoors();
         return elevator;
     }
 
@@ -136,7 +113,6 @@ class Elevator {
 
     createFloorRequestButtons(_amountOfFloors) {
         let buttonFloor = 1;
-        // let elevator = new Elevator();
         let floorRequestButtonID = 1;
         for (var l = 0; l < _amountOfFloors; l++) {
             let floorRequestButton = new FloorRequestButton(floorRequestButtonID, buttonFloor);
@@ -144,7 +120,6 @@ class Elevator {
             buttonFloor += 1;
             floorRequestButtonID += 1;
         }
-        //console.log(this.floorRequestButtonList);
     }
     // //Simulate when a user press a button inside the elevator
     requestFloor(floor) {
@@ -152,7 +127,6 @@ class Elevator {
         console.log(floor);
         this.floorRequestList.push(floor);
         this.move();
-        // this.operateDoors();
     }
 
     move() {
@@ -233,41 +207,3 @@ class Door {
 }
 
 module.exports = { Column, Elevator, CallButton, FloorRequestButton, Door }
-
-// const column = new Column(1, 10, 2);
-// column.elevatorList[0]._currentFloor = 2;
-// column.elevatorList[1]._currentFloor = 6;
-// const elevator = column.requestElevator(3, 'up');
-// elevator.requestFloor(7);
-// console.log(elevator);
-
-/*Scenario 2*/
-//const column = new Column(1, 10, 2);
-//column.elevatorList[0].currentFloor = 10;
-//column.elevatorList[1].currentFloor = 3;
-//Part 1
-//const elevator = column.requestElevator(1, 'Up');
-//elevator.requestFloor(6);
-//console.log(elevator);
-/*Part 2
-const elevator = column.requestElevator(3, 'Up');
-elevator.requestFloor(5);
-console.log(elevator);*/
-/*Part 3
-const elevator = column.requestElevator(9, 'Down');
-elevator.requestFloor(2);
-console.log(elevator);*/
-/*Scenario 3
-const column = new Column(1, 'online', 10, 2);
-column.elevatorList[0].currentFloor = 10;
-column.elevatorList[1].currentFloor = 3;
-column.elevatorList[1].status = 'moving';
-column.elevatorList[1].floorRequestList.push(6);*/
-/*Part 1
-const elevator = column.requestElevator(3, 'Down');
-elevator.requestFloor(2);
-console.log(elevator);*/
-/*Part 2
-const elevator = column.requestElevator(10, 'Down');
-elevator.requestFloor(3);
-console.log(elevator);*/
