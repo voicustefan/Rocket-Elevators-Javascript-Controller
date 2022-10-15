@@ -4,7 +4,12 @@
 To use the program, you need to type 
 
 npm install
+
+-to install npm
+
 npm test.js
+
+-to run the tests 
 
 ### Description
 
